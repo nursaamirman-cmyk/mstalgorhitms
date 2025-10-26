@@ -26,7 +26,7 @@
         ],
         "total_cost": 7,
         "operations_count": 4,
-        "execution_time_ms": 0.5542
+        "execution_time_ms": 0.5055
       }
     },
     {
@@ -65,7 +65,7 @@
         ],
         "total_cost": 20,
         "operations_count": 7,
-        "execution_time_ms": 0.115
+        "execution_time_ms": 0.1027
       }
     },
     {
@@ -114,7 +114,7 @@
         ],
         "total_cost": 22,
         "operations_count": 9,
-        "execution_time_ms": 0.1148
+        "execution_time_ms": 0.1349
       }
     }
   ]
