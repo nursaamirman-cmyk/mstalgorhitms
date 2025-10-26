@@ -1,0 +1,7 @@
+Graph ID,Algorithm,Total Cost,Operations Count,Execution Time (ms)
+1,Prim,7,4,0,4258
+1,Kruskal,7,4,1,0650
+2,Prim,20,7,0,0761
+2,Kruskal,20,7,0,0560
+3,Prim,22,9,0,1944
+3,Kruskal,22,9,0,0779
