@@ -41,15 +41,23 @@ public class Main {
                 System.out.println("Edges: " + graph.getEdgesCount());
                 System.out.println("Edges list: " + edges);
 
-                PrimAlgorithm.Result result = PrimAlgorithm.findMST(graph);
-
+                // prim's algorithm
+                PrimAlgorithm.Result primResultData = PrimAlgorithm.findMST(graph);
                 System.out.println("\n Prim's Algorithm Result:");
-                System.out.println("MST edges: " + result.mstEdges);
-                System.out.println("Total cost: " + result.totalCost);
-                System.out.println("Operations count: " + result.operationsCount);
-                System.out.printf("Execution time (ms): %.4f\n", result.executionTimeMs);
+                System.out.println("MST edges: " + primResultData.mstEdges);
+                System.out.println("Total cost: " + primResultData.totalCost);
+                System.out.println("Operations count: " + primResultData.operationsCount);
+                System.out.printf("Execution time (ms): %.4f\n", primResultData.executionTimeMs);
 
-               
+                // Kruskal's algorithm
+                KruskalAlgorithm.Result kruskalResultData = KruskalAlgorithm.findMST(graph);
+                System.out.println("\n Kruskal's Algorithm Result:");
+                System.out.println("MST edges: " + kruskalResultData.mstEdges);
+                System.out.println("Total cost: " + kruskalResultData.totalCost);
+                System.out.println("Operations count: " + kruskalResultData.operationsCount);
+                System.out.printf("Execution time (ms): %.4f\n", kruskalResultData.executionTimeMs);
+
+                // forming JSON result for this graph
                 JsonObject graphResult = new JsonObject();
                 graphResult.addProperty("graph_id", id);
 
@@ -58,25 +66,42 @@ public class Main {
                 inputStats.addProperty("edges", graph.getEdgesCount());
                 graphResult.add("input_stats", inputStats);
 
-                JsonObject primResult = new JsonObject();
-                JsonArray mstEdgesArray = new JsonArray();
-                for (Edge edge : result.mstEdges) {
+                // Prim JSON
+                JsonObject primJson = new JsonObject();
+                JsonArray primEdgesArray = new JsonArray();
+                for (Edge edge : primResultData.mstEdges) {
                     JsonObject edgeJson = new JsonObject();
                     edgeJson.addProperty("from", edge.from);
                     edgeJson.addProperty("to", edge.to);
                     edgeJson.addProperty("weight", edge.weight);
-                    mstEdgesArray.add(edgeJson);
+                    primEdgesArray.add(edgeJson);
                 }
-                primResult.add("mst_edges", mstEdgesArray);
-                primResult.addProperty("total_cost", result.totalCost);
-                primResult.addProperty("operations_count", result.operationsCount);
-                primResult.addProperty("execution_time_ms", result.executionTimeMs);
+                primJson.add("mst_edges", primEdgesArray);
+                primJson.addProperty("total_cost", primResultData.totalCost);
+                primJson.addProperty("operations_count", primResultData.operationsCount);
+                primJson.addProperty("execution_time_ms", primResultData.executionTimeMs);
+                graphResult.add("prim", primJson);
 
-                graphResult.add("prim", primResult);
+                // Kruskal JSON
+                JsonObject kruskalJson = new JsonObject();
+                JsonArray kruskalEdgesArray = new JsonArray();
+                for (Edge edge : kruskalResultData.mstEdges) {
+                    JsonObject edgeJson = new JsonObject();
+                    edgeJson.addProperty("from", edge.from);
+                    edgeJson.addProperty("to", edge.to);
+                    edgeJson.addProperty("weight", edge.weight);
+                    kruskalEdgesArray.add(edgeJson);
+                }
+                kruskalJson.add("mst_edges", kruskalEdgesArray);
+                kruskalJson.addProperty("total_cost", kruskalResultData.totalCost);
+                kruskalJson.addProperty("operations_count", kruskalResultData.operationsCount);
+                kruskalJson.addProperty("execution_time_ms", kruskalResultData.executionTimeMs);
+                graphResult.add("kruskal", kruskalJson);
+
                 resultsArray.add(graphResult);
             }
 
-            
+            // Writing final results to output JSON file
             JsonObject finalOutput = new JsonObject();
             finalOutput.add("results", resultsArray);
 
@@ -84,7 +109,7 @@ public class Main {
             gson.toJson(finalOutput, writer);
             writer.close();
 
-            System.out.println("\n Results have been saved to assign_3_output.json successfully!");
+            System.out.println("\nResults have been saved to assign_3_output.json successfully!");
 
         } catch (Exception e) {
             e.printStackTrace();

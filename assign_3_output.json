@@ -26,7 +26,29 @@
         ],
         "total_cost": 7,
         "operations_count": 4,
-        "execution_time_ms": 0.5055
+        "execution_time_ms": 0.616
+      },
+      "kruskal": {
+        "mst_edges": [
+          {
+            "from": "B",
+            "to": "C",
+            "weight": 1
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "weight": 2
+          },
+          {
+            "from": "B",
+            "to": "D",
+            "weight": 4
+          }
+        ],
+        "total_cost": 7,
+        "operations_count": 4,
+        "execution_time_ms": 1.5128
       }
     },
     {
@@ -65,7 +87,39 @@
         ],
         "total_cost": 20,
         "operations_count": 7,
-        "execution_time_ms": 0.1027
+        "execution_time_ms": 0.1081
+      },
+      "kruskal": {
+        "mst_edges": [
+          {
+            "from": "A",
+            "to": "C",
+            "weight": 2
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "weight": 3
+          },
+          {
+            "from": "E",
+            "to": "F",
+            "weight": 3
+          },
+          {
+            "from": "C",
+            "to": "D",
+            "weight": 5
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "weight": 7
+          }
+        ],
+        "total_cost": 20,
+        "operations_count": 7,
+        "execution_time_ms": 0.0947
       }
     },
     {
@@ -114,7 +168,49 @@
         ],
         "total_cost": 22,
         "operations_count": 9,
-        "execution_time_ms": 0.1349
+        "execution_time_ms": 0.2266
+      },
+      "kruskal": {
+        "mst_edges": [
+          {
+            "from": "C",
+            "to": "D",
+            "weight": 1
+          },
+          {
+            "from": "A",
+            "to": "B",
+            "weight": 2
+          },
+          {
+            "from": "D",
+            "to": "E",
+            "weight": 2
+          },
+          {
+            "from": "A",
+            "to": "C",
+            "weight": 3
+          },
+          {
+            "from": "F",
+            "to": "G",
+            "weight": 3
+          },
+          {
+            "from": "E",
+            "to": "H",
+            "weight": 5
+          },
+          {
+            "from": "G",
+            "to": "H",
+            "weight": 6
+          }
+        ],
+        "total_cost": 22,
+        "operations_count": 9,
+        "execution_time_ms": 0.102
       }
     }
   ]
