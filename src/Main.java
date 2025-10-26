@@ -40,7 +40,7 @@ public class Main {
                 System.out.println("Edges: " + graph.getEdgesCount());
                 System.out.println("Edges list: " + edges);
 
-                // 🌿 ВЫЗОВ АЛГОРИТМА ПРИМА
+             
                 PrimAlgorithm.Result result = PrimAlgorithm.findMST(graph);
 
                 System.out.println("\n Prim’s Algorithm Result:");
